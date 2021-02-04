@@ -17,7 +17,7 @@ int sum(n1,n2)
 return n1+n2;
 }
 void print(){
-printf(“SUM of %d and %d =%d”,n1,n2,sum);
+printf(“SUM of %d and %d =%d”,n1,n2,Sum);
 }
 int main()
 {
