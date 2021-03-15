@@ -1,78 +1,106 @@
-//WAP to find the sum of two fractions.
 #include<stdio.h>
-typedef struct
-{
-  int n, d;
-} FRA;
-
-FRA
-add (FRA X, FRA Y, FRA* C)
-{
-//printf("%d",X.n);
-  C->n = (X.n * Y.d) + (Y.n * X.d);
-  C->d = X.d * Y.d;
-  
-  return *C;
-}
-
-FRA
-GCD (FRA * A)
+typedef struct 
 {
   
-  int h;
-  if (A->n < A->d)
-    {
-      h = A->n;
-    }
-  else if (A->n > A->d)
-    {
-      h = A->d;
-    }
-  else if (A->n == A->d)
-    {
-      A->n = 1;
-      A->d = 1;
-      return *A;
-    }
-  for (int i = 2; i <=h; i++)
-    {
-    label:if (A->n % i == 0 && A->d % i == 0)
-	{
-	  A->n = A->n / i;
-	  A->d = A->d / i;
-	  goto label;
-	  return *A;
-	}
-    }
-}
+int n;
+   
+int d;
+ 
+} fractions;
 
-FRA
-input (FRA * Z)
+ 
+ 
+fractions input () 
 {
-  printf ("Enter the numerator:\n");
-  scanf ("%d", &Z->n);
-  printf ("Enter the denominator:\n");
-  scanf ("%d", &Z->d);
-  return *Z;
-}
+  
+fractions f;
+  
+printf ("Enter the numerator:");
+  
+scanf ("%d", &f.n);
+  
+printf ("Enter the denominator:");
+  
+scanf ("%d", &f.d);
+  
+return f;
 
-FRA
-Output (FRA * B)
-{
-  printf ("Sum of given fractions is %d/%d", B->n, B->d);
 }
 
 int
-main ()
+gcd (int n, int d) 
 {
-  FRA X;
-  FRA Y;
-  FRA C;
-  input (&X);
-  input (&Y);
-  add (X, Y, &C);
-  GCD (&C);
-   
-  Output (&C);
-  return 0;
+  
+int b;
+  
+for (int i = 2; i <= n && i <= d; i++)
+    
+    {
+      
+if (n % i == 0 && d % i == 0)
+	
+	{
+	  
+b = i;
+	
 }
+    
+}
+  
+return b;
+
+}
+
+fractions compute (fractions f1, fractions f2) 
+{
+  
+fractions s;
+  
+s.n = f1.n * f2.d + f1.d * f2.n;
+  
+s.d = f1.d * f2.d;
+  
+int a;
+  
+a = gcd (s.n, s.d);
+  
+s.n = s.n / a;
+  
+s.d = s.d / a;
+  
+return s;
+
+}
+
+
+
+
+
+ 
+fractions output (fractions S) 
+{
+  
+printf ("sum = %d / %d", S.n, S.d);
+
+}
+
+
+int
+main () 
+{
+  
+fractions fra1, fra2, sum;
+  
+fra1 = input ();
+  
+fra2 = input ();
+  
+sum = compute (fra1, fra2);
+  
+output (sum);
+  
+return 0;
+
+}
+
+
